@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PokeList from './component/PokeList';
 
 class App extends Component {
+
+    state = {
+        filter: ''
+    }
+
+    setFilter(event){
+        this.setState({filter: event.target.value});
+    }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+        var state = this.state;
+        return (
+          <div className="App">
+              <img className="pokeball-back" id="pokeballBack" src="//hanashiro.github.io/pokedex/images/pokeball.svg" alt=""/>
+              <input type="text" id="pokeFilter" placeholder="Search" onKeyUp={this.setFilter.bind(this)}/>
+              <PokeList filter={state.filter}/>
+
+          </div>
+        );
   }
 }
 
