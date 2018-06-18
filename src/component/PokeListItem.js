@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 
 export default class PokeListItem extends Component {
 
@@ -12,8 +13,10 @@ export default class PokeListItem extends Component {
 
         return (
           <li className="poke-list-item">
-              <img src={`//serebii.net/pokedex-xy/icon/${pkm.number}.png`}/>
-              <span>{pkm.number} - {pkm.name}</span>
+              <Link to={`/${pkm.number}`}>
+                <img src={`//serebii.net/pokedex-xy/icon/${pkm.number}.png`}/>
+                <span>{pkm.number} - {pkm.name}</span>
+              </Link>
           </li>
         );
     }
